@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="courseDao" class="com.mobcoursesapp.mvc.dao.impl.CourseDaoImpl"/>
+    <bean id="courseService" class="com.mobcoursesapp.mvc.services.impl.CourseServiceImpl">
+        <property name="dao" ref="courseDao"></property>
+    </bean>
+
+    <bean id="course_authorDao" class="com.mobcoursesapp.mvc.dao.impl.Course_AuthorDaoImpl"/>
+    <bean id="course_authorService" class="com.mobcoursesapp.mvc.services.impl.Course_AuthorServiceImpl">
+        <property name="dao" ref="course_authorDao"></property>
+    </bean>
+
+    <bean id="studentDao" class="com.mobcoursesapp.mvc.dao.impl.StudentDaoImpl"/>
+    <bean id="studentService" class="com.mobcoursesapp.mvc.services.impl.StudentServiceImpl">
+        <property name="dao" ref="studentDao"></property>
+    </bean>
+
+    <bean id="subjectDao" class="com.mobcoursesapp.mvc.dao.impl.SubjectDaoImpl"/>
+    <bean id="subjectService" class="com.mobcoursesapp.mvc.services.impl.SubjectServiceImpl">
+        <property name="dao" ref="subjectDao"></property>
+    </bean>
+
+</beans>

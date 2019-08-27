@@ -1,7 +1,7 @@
 package com.mobcoursesapp.mvc.services.impl;
 
 import com.mobcoursesapp.mvc.dao.ICourse_AuthorDao;
-import com.mobcoursesapp.mvc.entities.Course_Author;
+import com.mobcoursesapp.mvc.entities.CourseAuthor;
 import com.mobcoursesapp.mvc.services.ICourse_AuthorService;
 
 import javax.transaction.Transactional;
@@ -18,27 +18,27 @@ public class Course_AuthorServiceImpl implements ICourse_AuthorService {
     }
 
     @Override
-    public Course_Author save(Course_Author entity) {
+    public CourseAuthor save(CourseAuthor entity) {
         return dao.save(entity);
     }
 
     @Override
-    public Course_Author update(Course_Author entity) {
+    public CourseAuthor update(CourseAuthor entity) {
         return dao.update(entity);
     }
 
     @Override
-    public List<Course_Author> selectAll() {
+    public List<CourseAuthor> selectAll() {
         return dao.selectAll();
     }
 
     @Override
-    public List<Course_Author> selectAll(String sortField, String sort) {
+    public List<CourseAuthor> selectAll(String sortField, String sort) {
         return dao.selectAll(sortField, sort);
     }
 
     @Override
-    public Course_Author getById(Long id) {
+    public CourseAuthor getById(Long id) {
         return dao.getById(id);
     }
 
@@ -48,12 +48,12 @@ public class Course_AuthorServiceImpl implements ICourse_AuthorService {
     }
 
     @Override
-    public Course_Author findOne(String paramName, Object paramValue) {
+    public CourseAuthor findOne(String paramName, Object paramValue) {
         return dao.findOne(paramName, paramValue);
     }
 
     @Override
-    public Course_Author findOne(String[] paramNames, Object[] paramValues) {
+    public CourseAuthor findOne(String[] paramNames, Object[] paramValues) {
         return dao.findOne(paramNames, paramValues);
     }
 

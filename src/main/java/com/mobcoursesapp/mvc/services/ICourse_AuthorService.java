@@ -1,27 +1,27 @@
 package com.mobcoursesapp.mvc.services;
 
 
-import com.mobcoursesapp.mvc.entities.Course_Author;
+import com.mobcoursesapp.mvc.entities.CourseAuthor;
 
 import java.util.List;
 
 public interface ICourse_AuthorService {
 
-    public Course_Author save(Course_Author entity);
+    public CourseAuthor save(CourseAuthor entity);
 
-    public Course_Author update(Course_Author entity);
+    public CourseAuthor update(CourseAuthor entity);
 
-    public List<Course_Author> selectAll();
+    public List<CourseAuthor> selectAll();
 
-    public List<Course_Author> selectAll(String sortField, String sort);
+    public List<CourseAuthor> selectAll(String sortField, String sort);
 
-    public Course_Author getById(Long id);
+    public CourseAuthor getById(Long id);
 
     public void remove(Long id);
 
-    public Course_Author findOne(String paramName, Object paramValue);
+    public CourseAuthor findOne(String paramName, Object paramValue);
 
-    public Course_Author findOne(String[] paramNames, Object[] paramValues);
+    public CourseAuthor findOne(String[] paramNames, Object[] paramValues);
 
     public int findCountBy(String paramName, String paramValue);
 }

@@ -44,7 +44,7 @@
 <div class="container">
     <div class="card card-login mx-auto mt-5">
         <div class="card-header" align="middle">
-            <img src="<%=request.getContextPath()%>/resources/images/logo.png">Mobile Courses Application
+            <img src="<%=request.getContextPath()%>/resources/images/logo.png" height="24" width="24">Mobile Courses Application
         </div>
         <div class="card-body">
             <form>
@@ -70,11 +70,12 @@
 <%--                        </label>--%>
 <%--                    </div>--%>
 <%--                </div>--%>
+<%--                <c:url value="" var=""/>--%>
                 <a class="btn btn-primary btn-block" href="index.html" style="background: #F9AC19!important; border: 1px solid #F9AC19">Login</a>
             </form>
             <div class="text-center">
-                <a class="d-block small mt-3" href="register.html">Register an Account</a>
-                <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+                <c:url value="/register/" var="register"/>
+                <a class="d-block small mt-3" href="${register}">Register an Account</a>
             </div>
         </div>
     </div>

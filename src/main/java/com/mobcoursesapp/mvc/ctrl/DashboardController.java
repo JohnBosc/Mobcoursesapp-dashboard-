@@ -13,16 +13,15 @@ import java.util.Locale;
 @RequestMapping(value = "/dashboard")
 public class DashboardController {
 
-    private static final Logger logger = LoggerFactory.getLogger(DashboardController.class);
-
-//    @RequestMapping(value = "/")
-//    public String home () {
-//        return "home/home";
-//    }
-
     @RequestMapping(value = "/")
     public String home(Locale locale, Model model) {
 
         return "dashboard/dashboard";
+    }
+
+    @RequestMapping(value = "/blank")
+    public String blank(Locale locale, Model model) {
+
+        return "blank/blank";
     }
 }

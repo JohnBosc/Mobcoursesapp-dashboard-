@@ -12,37 +12,42 @@ public class Subject implements Serializable {
     @GeneratedValue
     private Long subjectID;
 
-    private String subject_name;
+    private String subjectName;
 
     @OneToMany(mappedBy = "subject")
-    private List<Course> courseList;
+    private List<Course> courses;
 
 
 
     public Subject() {
     }
 
-    public Long getSubjectID() {
-        return subjectID;
-    }
 
+    //Setters
     public void setSubjectID(Long subjectID) {
         this.subjectID = subjectID;
     }
 
-    public String getSubject_name() {
-        return subject_name;
+    public void setSubjectName(String subjectName) {
+        this.subjectName = subjectName;
     }
 
-    public void setSubject_name(String subject_name) {
-        this.subject_name = subject_name;
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
     }
 
-    public List<Course> getCourseList() {
-        return courseList;
+    //Getters
+
+
+    public Long getSubjectID() {
+        return subjectID;
     }
 
-    public void setCourseList(List<Course> courseList) {
-        this.courseList = courseList;
+    public String getSubjectName() {
+        return subjectName;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
     }
 }

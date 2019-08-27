@@ -20,9 +20,9 @@ public class LoginController {
         return "login/login";
     }
 
-//    @RequestMapping(value = "/blank")
-//    public String home(Locale locale, Model model) {
-//
-//        return "blank/blank";
-//    }
+    @RequestMapping(value = "/register")
+    public String home(Locale locale, Model model) {
+
+        return "register/register";
+    }
 }

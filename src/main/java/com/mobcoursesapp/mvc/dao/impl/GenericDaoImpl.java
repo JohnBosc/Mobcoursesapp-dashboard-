@@ -30,7 +30,7 @@ public class GenericDaoImpl<E> implements IGenericDao<E> {
 
     @Override
     public E save(E entity) {
-        em.merge(entity);
+        em.persist(entity); // persist can be changed to merge
         return entity;
     }
 
@@ -95,4 +95,13 @@ public class GenericDaoImpl<E> implements IGenericDao<E> {
         query.setParameter(paramName, paramValue);
         return query.getResultList().size() > 0 ?((Long) query.getSingleResult()).intValue() : 0;
     }
+
+
+//    @Override
+//    public List<E> selectAllById(Long id){
+//
+//        Query query = em.createQuery() ;
+//
+//        return query.getResultList();
+//    }
 }

@@ -8,6 +8,16 @@
         <property name="dao" ref="courseDao"></property>
     </bean>
 
+    <bean id="lessonDao" class="com.mobcoursesapp.mvc.dao.impl.LessonDaoImpl"/>
+    <bean id="lessonService" class="com.mobcoursesapp.mvc.services.impl.LessonServiceImpl">
+        <property name="dao" ref="lessonDao"></property>
+    </bean>
+
+    <bean id="titleDao" class="com.mobcoursesapp.mvc.dao.impl.TitleDaoImpl"/>
+    <bean id="titleService" class="com.mobcoursesapp.mvc.services.impl.TitleServiceImpl">
+        <property name="dao" ref="titleDao"></property>
+    </bean>
+
     <bean id="course_authorDao" class="com.mobcoursesapp.mvc.dao.impl.Course_AuthorDaoImpl"/>
     <bean id="course_authorService" class="com.mobcoursesapp.mvc.services.impl.Course_AuthorServiceImpl">
         <property name="dao" ref="course_authorDao"></property>

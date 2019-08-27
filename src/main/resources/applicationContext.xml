@@ -28,7 +28,7 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
         <property name="persistenceUnitManager" ref="persistenceUnitManager"></property>
-        <property name="persistenceUnitName" value="UP_FLIGHT"></property>
+        <property name="persistenceUnitName" value="UP_COURSE"></property>
     </bean>
 
     <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
@@ -44,9 +44,14 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
     <tx:annotation-driven transaction-manager="transactionManager"/>
     <context:annotation-config></context:annotation-config>
 
-<!--    <bean id="multipartResolver"-->
-<!--          class="org.springframework.web.multipart.support.StandardServletMultipartResolver">-->
-<!--    </bean>-->
+
+    <!--    Bean to save picture in the database-->
+    <!--        <bean name="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">-->
+    <!--            <property name="maxUploadSize" value="100000000"/>-->
+    <!--        </bean>-->
+
+    <!-- Support For File Upload And Download -->
+    <bean name="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"/>
 
     <!-- Beans declaration -->
     <import resource="classpath:config/beans-config.xml"/>

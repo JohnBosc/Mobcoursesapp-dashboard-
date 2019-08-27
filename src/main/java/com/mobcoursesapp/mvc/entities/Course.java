@@ -1,7 +1,10 @@
 package com.mobcoursesapp.mvc.entities;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "Course")
@@ -11,89 +14,109 @@ public class Course implements Serializable {
     @GeneratedValue
     private Long courseID;
 
-    private String course_name;
+    private String courseTitle;
 
     @ManyToOne
     @JoinColumn(name = "subjectID")
     private Subject subject;
 
     @ManyToOne
-    @JoinColumn(name = "course_AuthorID")
-    private Course_Author course_author;
+    @JoinColumn(name = "courseAuthorID")
+    private CourseAuthor courseAuthor;
 
-    private String course_description;
+    private String courseDescription;
 
-    private String other_details;
+    private String otherDetails;
 
     private String requirements;
 
-    private String photo;
+    @Transient
+    private MultipartFile photo;
+
+    @OneToMany(mappedBy = "course")
+    private List<Lesson> lessons;
 
 
     public Course() {
     }
 
-    public Long getCourseID() {
-        return courseID;
-    }
+
+
+    //Setters
+
 
     public void setCourseID(Long courseID) {
         this.courseID = courseID;
     }
 
-    public String getCourse_name() {
-        return course_name;
-    }
-
-    public void setCourse_name(String course_name) {
-        this.course_name = course_name;
-    }
-
-    public String getCourse_description() {
-        return course_description;
-    }
-
-    public void setCourse_description(String course_description) {
-        this.course_description = course_description;
-    }
-
-    public String getOther_details() {
-        return other_details;
-    }
-
-    public void setOther_details(String other_details) {
-        this.other_details = other_details;
-    }
-
-    public String getRequirements() {
-        return requirements;
-    }
-
-    public void setRequirements(String requirements) {
-        this.requirements = requirements;
-    }
-
-    public Subject getSubject() {
-        return subject;
+    public void setCourseTitle(String courseTitle) {
+        this.courseTitle = courseTitle;
     }
 
     public void setSubject(Subject subject) {
         this.subject = subject;
     }
 
-    public Course_Author getCourse_author() {
-        return course_author;
+    public void setCourseAuthor(CourseAuthor courseAuthor) {
+        this.courseAuthor = courseAuthor;
     }
 
-    public void setCourse_author(Course_Author course_author) {
-        this.course_author = course_author;
+    public void setCourseDescription(String courseDescription) {
+        this.courseDescription = courseDescription;
     }
 
-    public String getPhoto() {
+    public void setOtherDetails(String otherDetails) {
+        this.otherDetails = otherDetails;
+    }
+
+    public void setRequirements(String requirements) {
+        this.requirements = requirements;
+    }
+
+    public void setPhoto(MultipartFile photo) {
+        this.photo = photo;
+    }
+
+    public void setLessons(List<Lesson> lessons) {
+        this.lessons = lessons;
+    }
+
+    //Getters
+
+
+    public Long getCourseID() {
+        return courseID;
+    }
+
+    public String getCourseTitle() {
+        return courseTitle;
+    }
+
+    public Subject getSubject() {
+        return subject;
+    }
+
+    public CourseAuthor getCourseAuthor() {
+        return courseAuthor;
+    }
+
+    public String getCourseDescription() {
+        return courseDescription;
+    }
+
+    public String getOtherDetails() {
+        return otherDetails;
+    }
+
+    public String getRequirements() {
+        return requirements;
+    }
+
+    public MultipartFile getPhoto() {
         return photo;
     }
 
-    public void setPhoto(String photo) {
-        this.photo = photo;
+    public List<Lesson> getLessons() {
+        return lessons;
     }
 }

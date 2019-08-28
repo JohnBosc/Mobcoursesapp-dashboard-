@@ -26,5 +26,4 @@ public interface ILessonService {
 
     public int findCountBy(String paramName, String paramValue);
 
-//    public Optional<Lesson> getLessonById(Long id); // ADDED METHOD
 }

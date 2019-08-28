@@ -90,7 +90,7 @@
                                             ${course.getCourseDescription()}
                                     </p>
                                         <%--                            add the id of the corresponding course to lesson--%>
-                                    <c:url value="/lesson/${course.getCourseID()}/" var="urlCourseLessons"/>
+                                    <c:url value="/lesson/${course.getCourseID()}" var="urlCourseLessons"/>
                                     <a rel="nofollow" href="${urlCourseLessons}" style="float: left!important; background: #007BFF; padding: 5px 10px; color: #fff;">
                                         <fmt:message key="common.course.display"/>
                                         <i class="fas fa-fw fa-arrow-right"></i></a>

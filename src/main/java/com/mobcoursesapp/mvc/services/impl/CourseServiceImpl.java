@@ -4,6 +4,7 @@ package com.mobcoursesapp.mvc.services.impl;
 
 import com.mobcoursesapp.mvc.dao.ICourseDao;
 import com.mobcoursesapp.mvc.entities.Course;
+import com.mobcoursesapp.mvc.entities.Lesson;
 import com.mobcoursesapp.mvc.services.ICourseService;
 
 import javax.transaction.Transactional;
@@ -63,4 +64,5 @@ public class CourseServiceImpl implements ICourseService {
     public int findCountBy(String paramName, String paramValue) {
         return dao.findCountBy(paramName, paramValue);
     }
+
 }

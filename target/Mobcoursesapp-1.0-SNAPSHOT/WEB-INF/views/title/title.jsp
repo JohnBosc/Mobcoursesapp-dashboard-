@@ -57,59 +57,98 @@
                     <c:url value="/dashboard/" var="dashboard"/>
                     <a href="${dashboard}"><fmt:message key="common.dashboard"/> </a>
                 </li>
-                <li class="breadcrumb-item active"><fmt:message key="common.courses"/></li>
+                <li class="breadcrumb-item">
+                    <c:url value="/dashboard/" var="dashboard"/>
+                    <a href="${course}"><fmt:message key="common.courses"/> </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <c:url value="/dashboard/" var="dashboard"/>
+                    <a href="#"><fmt:message key="common.courses.lesson"/> </a>
+                </li>
+                <li class="breadcrumb-item active">Titles</li>
             </ol>
 
             <!-- Page Content -->
             <hr>
             <p>This is a great starting point for new custom pages.</p>
 
-            <%--            <a href="#" style="position:relative;">--%>
-            <%--                <img class="thumbnail" src="http://placehold.it/140x90" alt=""/>--%>
-            <%--                <button class="btn" style="position:absolute;bottom:5px;right:5px;margin:0;padding:5px 3px;">+</button>--%>
-            <%--            </a>--%>
 
-            <%--            course block--%>
+            <div class="row">
+                <div class="col-lg-3 col-md-2 col-sm-0"></div>
+                <div class="col-lg-6 col-md-8 col-sm-12">
+                    <c:forEach items="${titles}" var="title">
 
+                        <div>
 
-            <c:forEach items="${courses}" var="course">
+                            <!-- Illustrations -->
+                            <div>
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-dark"
+                                        style="float: left!important; width: 95%!important;">
+                                            ${title.getTitleName()}
+                                    </h6>
+                                    <span style="float: right!important;">
+                                    <c:url value="/title/update/${title.getTitleID()}" var="urlUpdate"/>
+                                          <a href="${urlUpdate}"> <i class="fas fa-fw fa-edit"></i></a>&nbsp;
+<%--                                          | &nbsp;&nbsp;--%>
+<%--                                          <a href="javascript:void(0);" data-toggle="modal" data-target="#modalLesson${titles.getLessonID()}"><i class="fas fa-fw fa-trash" style="color: #CC0000;"></i></a>--%>
+                                        <!-- Modal starts here -->
 
+                                          <div class="modal fade" id="modalLesson${title.getTitleID()}" tabindex="-1"
+                                               role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h5 class="modal-title" id="deleteModalLabel">Confirm deletion</h5>
+                                                  <button class="close" type="button" data-dismiss="modal"
+                                                          aria-label="Close">
+                                                    <span aria-hidden="true"><i
+                                                            class="fas fa-fw fa-window-close"></i></span>
+                                                  </button>
+                                                </div>
+                                                <div class="modal-body">Please confirm your choice</div>
+                                                <div class="modal-footer">
+                                                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                                  <c:url value="/titles/remove/${title.getTitleID()}" var="urlRemove"/>
+                                                  <a class="btn btn-danger" href="${urlRemove}"><i
+                                                          class="fas fa-fw fa-trash" style="color: #FFFFFF;"></i>&nbsp;Delete</a>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
 
-                <div class="col-lg-6 mb-4">
-
-                    <!-- Illustrations -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">
-                                    ${course.getCourseTitle()}
-                            </h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="text-center">
-                                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                                     src="${course.getPhoto()}" alt="">
+                                        <!-- End Modal -->
+                                </span>
+                                    <br>
+                                    <div class="container-fluid" style="text-align:justify!important;">
+                                        <hr style="width: 100%!important; visibility: hidden!important;">
+                                        <p style=" width: 100%!important; text-align:justify-all!important;">
+                                                ${title.getContent()}
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-                            <p>
-                                    ${course.getCourseDescription()}
-                            </p>
-                            <a rel="nofollow" href="">
-                                <fmt:message key="common.course.display"/>
-                                <i class="fas fa-fw fa-arrow-right"></i></a>
+
                         </div>
-                    </div>
 
+                    </c:forEach>
                 </div>
-
-            </c:forEach>
+                <div class="col-lg-3 col-md-2 col-sm-0"></div>
+            </div>
 
 
             <%--            Bottom right ADD button--%>
-            <c:url value="/course/new" var="addCourse"/>
-            <a href="${addCourse}"
-               style="position:fixed;bottom:20%;left:-6px;margin:0;padding:10px 5px;">
+            <c:url value="/title/new" var="addTitle"/>
+            <a href="${addTitle}"
+               style="position: fixed;
+    right: 15px;
+    bottom: 90px;
+    text-align: center;
+    color: #fff;
+    line-height: 46px;">
                 <button type="button" class="btn btn-success btn-lg" style="border-radius: 30px!important;">
                     <span class="fas fa-fw fa-plus-circle"></span>
-                    <b style="font-size: 12px;"> ADD </b>
+                    <b style="font-size: 12px;"> Add Title </b>
                 </button>
             </a>
         </div>

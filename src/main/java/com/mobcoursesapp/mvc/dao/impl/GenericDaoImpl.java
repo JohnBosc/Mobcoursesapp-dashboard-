@@ -2,6 +2,7 @@ package com.mobcoursesapp.mvc.dao.impl;
 
 
 import com.mobcoursesapp.mvc.dao.IGenericDao;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,6 +16,8 @@ public class GenericDaoImpl<E> implements IGenericDao<E> {
 
     @PersistenceContext
     EntityManager em;
+
+    JdbcTemplate template;
 
     private Class<E> type;
 
@@ -97,11 +100,4 @@ public class GenericDaoImpl<E> implements IGenericDao<E> {
     }
 
 
-//    @Override
-//    public List<E> selectAllById(Long id){
-//
-//        Query query = em.createQuery() ;
-//
-//        return query.getResultList();
-//    }
 }

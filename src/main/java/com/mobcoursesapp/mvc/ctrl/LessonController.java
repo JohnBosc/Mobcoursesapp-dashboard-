@@ -16,8 +16,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.*;
 import java.applet.Applet;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +31,7 @@ import java.util.Optional;
 @RequestMapping(value = "/lesson")
 public class LessonController {
 
-    private static final Logger logger = LoggerFactory.getLogger(CourseController.class);
+    private static final Logger logger = LoggerFactory.getLogger(LessonController.class);
 
     @Autowired
     private ILessonService lessonService;
@@ -36,19 +40,30 @@ public class LessonController {
     @Autowired
     private ICourseService courseService;
 
+    @PersistenceContext
+    EntityManager em;
+
+    public static Long courseIdentity;
+
 
     @RequestMapping(value = "/{courseID}")
-    public String lesson(Model model, @PathVariable("courseID") Long courseID) {
+    public String lesson(Model model, @PathVariable Long courseID) {
 
-//        Optional<Lesson> lessons = lessonService.getLessonById(courseID);
-        List<Lesson> lessons = lessonService.selectAll();
+
+        Query query = em.createQuery("select l" + " from Lesson l " + "where l.course.courseID=:courseID", Lesson.class);
+        query.setParameter("courseID", courseID);
+//        query.setParameter("lessonTitle", lessonTitle);
+//        query.setParameter("lessonID", lessonID);
+        List lessons = query.getResultList();
         if (lessons == null) {
             lessons = new ArrayList<Lesson>();
         }
 
-
         model.addAttribute("lessons", lessons);
 
+        courseIdentity = courseID;
+
+        System.out.println(courseIdentity); // For debug purpose
 
         return "lesson/lesson";
     }
@@ -59,13 +74,12 @@ public class LessonController {
 
         Lesson lesson = new Lesson();
 
-        List<Course> courses = courseService.selectAll();
-        if (courses == null) {
-            courses = new ArrayList<Course>();
-        }
 
         model.addAttribute("lesson", lesson);
-        model.addAttribute("courses", courses);
+
+        System.out.println(courseIdentity);
+
+        model.addAttribute("courseIdentity", courseIdentity);
 
         return "lesson/addLesson";
     }
@@ -86,20 +100,9 @@ public class LessonController {
 
         }
 
-        return "redirect:/lesson/";
+        return "redirect:/lesson/" + courseIdentity;
     }
-//
-//    private String extractFileName(Part part) {
-//        String contentDisp = part.getHeader("content-disposition");
-//        String[] items = contentDisp.split(";");
-//        for (String s : items) {
-//            if (s.trim().startsWith("filename")){
-//                return s.substring(s.indexOf("=") + 2, s.length() - 1);
-//            }
-//        }
-//        return "";
-//    }
-//
+
     @RequestMapping(value = "/update/{lessonID}")
     public String updateLesson(Model model, @PathVariable Long lessonID) {
 
@@ -125,7 +128,7 @@ public class LessonController {
                 courseService.remove(lessonID);
             }
         }
-        return "redirect:/lesson/";
+        return "redirect:/lesson/" + courseIdentity;
     }
 
 

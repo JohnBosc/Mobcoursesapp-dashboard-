@@ -61,7 +61,15 @@
                     <c:url value="/course/" var="course"/>
                     <a href="${course}"><fmt:message key="common.courses"/></a>
                 </li>
-                <li class="breadcrumb-item active"><fmt:message key="common.addCourse"/></li>
+                <li class="breadcrumb-item">
+                    <c:url value="/dashboard/" var="dashboard"/>
+                    <a href="#"><fmt:message key="common.courses.lesson"/> </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <c:url value="/dashboard/" var="dashboard"/>
+                    <a href="#">Title </a>
+                </li>
+                <li class="breadcrumb-item active">Add new title</li>
             </ol>
 
             <!-- Page Content -->
@@ -71,66 +79,43 @@
                     margin: 0 !important;
                 }
 
-                div.panel-body {
-                    width: 70% !important;
-                }
 
                 label {
                     margin-bottom: 0 !important;
                     margin-top: 10px !important;
                 }
 
-                .form-control-sm {
-                    width: 50% !important;
-                }
             </style>
 
 
             <!-- Form new course -->
             <div class="panel-body form-add">
-                <c:url value="/course/save" var="urlSave"/>
-                <f:form modelAttribute="course" action="${urlSave}" method="post" enctype="multipart/form-data">
+                <c:url value="/title/save" var="urlSave"/>
+                <f:form modelAttribute="title" action="${urlSave}" method="post" enctype="multipart/form-data">
+                    <f:hidden path="titleID"/>
                     <div class="form-group">
-                        <label><fmt:message key="common.course.subject"/></label>
-                        <f:select path="subject.subjectID" items="${subjects}" itemLabel="subjectName" itemValue="subjectID"
-                                  class="form-control form-control-sm"/>
+                        <label>Title Name</label>
+                        <f:input path="titleName" class="form-control form-control-sm"/>
                     </div>
+
                     <%--                    <f:hidden path="airport_id"/> <!-- System must not duplicate the entries after update -->--%>
                     <div class="form-group" style="visibility: hidden!important;">
                         <label></label>
                         <input style="visibility: hidden!important;" class="form-control form-control-sm"/>
                     </div>
-                    <div class="form-group">
-                        <label><fmt:message key="common.course.photo.upload"/></label><p>
-                        <f:input path="photo" type="file" class="form-control form-control-sm" name="file"/>
-                    </div>
-                    <div class="form-group">
-                        <label><fmt:message key="common.course.name"/></label>
-                        <f:input path="courseTitle" class="form-control form-control-sm"/>
-                    </div>
-                    <div class="form-group">
-                        <label><fmt:message key="common.course.author"/></label>
-                        <f:input path="courseAuthor" class="form-control form-control-sm" />
-                    </div>
-                    <div class="form-group">
-                        <label><fmt:message key="common.course.description"/></label>
-                        <f:input path="courseDescription" class="form-control form-control-sm"/>
-                    </div>
-                    <div class="form-group">
-                        <label><fmt:message key="common.course.details"/></label>
-                        <f:input path="otherDetails" class="form-control form-control-sm"/>
-                    </div>
-                    <div class="form-group">
-                        <label><fmt:message key="common.course.requirements"/></label>
-                        <f:input path="requirements" class="form-control form-control-sm"/>
-                    </div>
+
                     <div class="form-group">
                         <label><fmt:message key="common.course.content"/></label>
                         <f:textarea path="content" name="description" id="description"/>
                     </div>
 
+                    <div class="form-group" style="visibility: hidden!important;" >
+                        <label>Lesson ID</label>
+                        <f:input path="lesson.lessonID" value="${lessonIdentity}" class="form-control form-control-sm"/>
+                    </div>
+
                     <div class="panel-footer" style="margin-top: 30px;">
-                        <a href="<c:url value="/course/"/> " class="btn btn-secondary" data-dismiss="modal"><i
+                        <a href="<c:url value="/title/${lessonIdentity}"/> " class="btn btn-secondary" data-dismiss="modal"><i
                                 class="fas fa-fw fa-arrow-left"></i>&nbsp;Cancel</a>
                         <button type="submit" class="btn btn-primary"><i class="fas fa-fw fa-save"></i>&nbsp;Save
                         </button>

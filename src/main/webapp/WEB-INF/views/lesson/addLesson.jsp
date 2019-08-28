@@ -93,10 +93,12 @@
             <div class="row">
                 <div class="col-sm col-lg col-md"></div>
                 <div class="col-sm col-lg-6 col-md-6">
-                    <!-- Form new course -->
+                    <!-- Form new lesson -->
                     <div class="panel-body form-add">
                         <c:url value="/lesson/save" var="urlSave"/>
                         <f:form modelAttribute="lesson" action="${urlSave}" method="post">
+                            <f:hidden path="lessonID"/>
+
 
                             <div class="form-group" style="visibility: hidden!important;">
                                 <label></label>
@@ -107,10 +109,14 @@
                                 <label><fmt:message key="common.course.lesson.name"/></label>
                                 <f:input path="lessonTitle" class="form-control form-control-sm"/>
                             </div>
+                            <div class="form-group" style="visibility: hidden!important;">
+                                <label>Course ID</label>
+                                <f:input path="course.courseID" value="${courseIdentity}" class="form-control form-control-sm"/>
+                            </div>
 
 
                             <div class="panel-footer" style="margin-top: 30px;">
-                                <a href="<c:url value="/lesson/"/> " class="btn btn-secondary" data-dismiss="modal"><i
+                                <a href="<c:url value="/lesson/${courseIdentity}"/> " class="btn btn-secondary" data-dismiss="modal"><i
                                         class="fas fa-fw fa-arrow-left"></i>&nbsp;Cancel</a>
                                 <button type="submit" class="btn btn-primary"><i class="fas fa-fw fa-save"></i>&nbsp;Save
                                 </button>

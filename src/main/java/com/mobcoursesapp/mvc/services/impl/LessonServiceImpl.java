@@ -66,12 +66,5 @@ public class LessonServiceImpl implements ILessonService {
         return dao.findCountBy(paramName, paramValue);
     }
 
-    // METHOD THAT WAS ADDED FROM JpaRepository
-//    public Optional<Lesson> getLessonById(Long id) {
-//        if (!dao.existsById(id)) {
-//            throw new ResourceNotFoundException("Lessons with course id " + id + " not found");
-//        }
-//        return dao.findById(id);
-//    }
 
 }

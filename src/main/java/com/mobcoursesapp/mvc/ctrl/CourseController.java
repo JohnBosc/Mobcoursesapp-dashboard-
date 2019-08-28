@@ -37,8 +37,6 @@ public class CourseController {
     @Autowired
     private ICourse_AuthorService course_authorService;
 
-    @Autowired
-    private ILessonService lessonService;
 
 
 

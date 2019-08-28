@@ -62,13 +62,13 @@
                     <a href="${courses}"><fmt:message key="common.courses"/></a>
                 </li>
                 <li class="breadcrumb-item active">
-<%--                    ${course.getCourseTitle}--%>
+                    ${CourseTitle1}
                 </li>
             </ol>
 
             <!-- Page Content -->
             <hr>
-            <p>This is a great starting point for new custom pages.</p>
+            <p>List of lessons.</p>
 
             <%--            <a href="#" style="position:relative;">--%>
             <%--                <img class="thumbnail" src="http://placehold.it/140x90" alt=""/>--%>
@@ -80,21 +80,20 @@
 
             <c:forEach items="${lessons}" var="lesson">
 
-
                 <div class="col-lg-6 mb-4">
 
                     <!-- Illustrations -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <a href="/title/">
-                                <h6 class="m-0 font-weight-bold text-primary" style="float: left!important; width: 85%!important;">
+                            <a href="${pageContext.request.contextPath}/title/${lesson.getLessonID()}">
+                                <h6 class="m-0 font-weight-bold text-primary" style="float: left!important; width: 95%!important;">
                                         ${lesson.getLessonTitle()}
                                 </h6>
                                 <span style="float: right!important;">
                                     <c:url value="/lesson/update/${lesson.getLessonID()}" var="urlUpdate"/>
                                           <a href="${urlUpdate}"> <i class="fas fa-fw fa-edit"></i></a>&nbsp;
-                                          | &nbsp;&nbsp;
-                                          <a href="javascript:void(0);" data-toggle="modal" data-target="#modalLesson${lesson.getLessonID()}"><i class="fas fa-fw fa-trash" style="color: #CC0000;"></i></a>
+<%--                                          | &nbsp;&nbsp;--%>
+<%--                                          <a href="javascript:void(0);" data-toggle="modal" data-target="#modalLesson${lesson.getLessonID()}"><i class="fas fa-fw fa-trash" style="color: #CC0000;"></i></a>--%>
                                     <!-- Modal starts here -->
 
                                           <div class="modal fade" id="modalLesson${lesson.getLessonID()}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -109,7 +108,7 @@
                                                 <div class="modal-body">Please confirm your choice</div>
                                                 <div class="modal-footer">
                                                   <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                                  <c:url value="/airport/remove/${lesson.getLessonID()}" var="urlRemove"/>
+                                                  <c:url value="/lesson/remove/${lesson.getLessonID()}" var="urlRemove"/>
                                                   <a class="btn btn-danger" href="${urlRemove}"><i class="fas fa-fw fa-trash" style="color: #FFFFFF;"></i>&nbsp;Delete</a>
                                                 </div>
                                               </div>

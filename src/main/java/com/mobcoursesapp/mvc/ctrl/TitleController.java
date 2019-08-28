@@ -7,12 +7,19 @@ import com.mobcoursesapp.mvc.entities.Title;
 import com.mobcoursesapp.mvc.services.ICourseService;
 import com.mobcoursesapp.mvc.services.ILessonService;
 import com.mobcoursesapp.mvc.services.ITitleService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +27,7 @@ import java.util.List;
 @RequestMapping(value = "/title")
 public class TitleController {
 
-//    private static final Logger logger = LoggerFactory.getLogger(CourseController.class);
+    private static final Logger logger = LoggerFactory.getLogger(TitleController.class);
 
     @Autowired
     private ITitleService titleService;
@@ -28,16 +35,27 @@ public class TitleController {
     @Autowired
     private ILessonService lessonService;
 
+    @PersistenceContext
+    EntityManager em;
 
-    @RequestMapping(value = "/")
-    public String title(Model model) {
+    public static Long lessonIdentity;
 
-        List<Title> titles = titleService.selectAll();
+
+    @RequestMapping(value = "/{lessonID}")
+    public String title(Model model, @PathVariable Long lessonID) {
+
+        Query query = em.createQuery("select t" + " from Title t " + "where t.lesson.lessonID=:lessonID", Title.class);
+        query.setParameter("lessonID", lessonID);
+        List titles = query.getResultList();
         if (titles == null) {
             titles = new ArrayList<Title>();
         }
 
         model.addAttribute("titles", titles);
+
+        lessonIdentity = lessonID;
+
+        System.out.println(lessonIdentity);  // For debug purpose
 
         return "title/title";
     }
@@ -48,16 +66,50 @@ public class TitleController {
 
         Title title = new Title();
 
-        List<Lesson> lessons = lessonService.selectAll();
-        if (lessons == null) {
-            lessons = new ArrayList<Lesson>();
-        }
-
         model.addAttribute("title", title);
-        model.addAttribute("lessons", lessons);
+        System.out.println(lessonIdentity); // For debug purpose
+
+        model.addAttribute("lessonIdentity", lessonIdentity);
 
         return "title/addTitle";
     }
+
+    @PostMapping(value = "/save")
+    public String saveCourse(Model model, Title title) {
+
+        if (title != null) {
+
+            if (title.getTitleID() != null) {
+
+                titleService.update(title);
+
+            } else {
+                titleService.save(title);
+            }
+
+        }
+
+        return "redirect:/lesson/" + lessonIdentity;
+    }
+
+
+    @RequestMapping(value = "/update/{titleID}")
+    public String updateLesson(Model model, @PathVariable Long titleID) {
+
+        if (titleID != null) {
+
+            Title title = titleService.getById(titleID);
+
+            if (title!= null) {
+                model.addAttribute("title", title);
+            }
+
+        }
+        return "title/addTitle";
+    }
+
+
+
 
 //
 //    @PostMapping(value = "/save", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})

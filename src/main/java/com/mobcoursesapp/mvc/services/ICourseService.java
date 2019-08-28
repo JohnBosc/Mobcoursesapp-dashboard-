@@ -2,6 +2,7 @@ package com.mobcoursesapp.mvc.services;
 
 
 import com.mobcoursesapp.mvc.entities.Course;
+import com.mobcoursesapp.mvc.entities.Lesson;
 
 import java.util.List;
 
@@ -24,4 +25,6 @@ public interface ICourseService {
     public Course findOne(String[] paramNames, Object[] paramValues);
 
     public int findCountBy(String paramName, String paramValue);
+
+
 }

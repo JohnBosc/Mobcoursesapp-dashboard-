@@ -1,7 +1,6 @@
 package com.mobcoursesapp.mvc.ctrl;
 
 
-import com.mobcoursesapp.mvc.dao.ILessonDao;
 import com.mobcoursesapp.mvc.entities.Course;
 import com.mobcoursesapp.mvc.entities.Lesson;
 import com.mobcoursesapp.mvc.services.ICourseService;
@@ -20,12 +19,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.swing.*;
-import java.applet.Applet;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping(value = "/lesson")
@@ -45,10 +40,8 @@ public class LessonController {
 
     public static Long courseIdentity;
 
-
     @RequestMapping(value = "/{courseID}")
     public String lesson(Model model, @PathVariable Long courseID) {
-
 
         Query query = em.createQuery("select l" + " from Lesson l " + "where l.course.courseID=:courseID", Lesson.class);
         query.setParameter("courseID", courseID);
@@ -68,6 +61,9 @@ public class LessonController {
         return "lesson/lesson";
     }
 
+//    public Long getCourseIdentity() {
+//        return courseIdentity;
+//    }
 
     @GetMapping(value = "/new")
     public String addLesson(Model model) {

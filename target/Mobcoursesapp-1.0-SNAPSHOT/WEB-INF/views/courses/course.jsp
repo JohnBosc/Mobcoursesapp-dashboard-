@@ -82,7 +82,7 @@
                                     <div class="text-md-center" style="margin: 0!important; padding: 0!important;">
                                         <img class="img-fluid px-0 px-sm-1 mt-0 mb-1"
                                              style="width: 20rem!important; height: 10rem!important;"
-                                             src="<%=request.getContextPath()%>/resources/thumbnails/${course.getCourseTitle()}.jpg"
+                                             src="http://localhost/mobcoursesapp/thumbnails/${course.getCourseTitle()}.jpg"
                                              alt="${course.getCourseTitle()}">
                                     </div>
 

@@ -1,3 +1,7 @@
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.ResultSet" %>
 <%@ include file="../includes/includes.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,7 +54,6 @@
     <div id="content-wrapper">
 
         <div class="container-fluid">
-
             <!-- Breadcrumbs-->
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
@@ -67,11 +70,31 @@
                     <div class="card text-white bg-primary o-hidden h-100">
                         <div class="card-body">
                             <div class="card-body-icon">
-                                <i class="fas fa-fw fa-comments"></i>
+                                <i class="fas fa-fw fa-graduation-cap"></i>
                             </div>
-                            <div class="mr-5">26 New Messages!</div>
+                            <div class="mr-5">
+
+                                <%
+                                    Object nbCourse = 0;
+                                    try {
+                                        Class.forName("com.mysql.cj.jdbc.Driver");
+                                        Connection cx = DriverManager.getConnection("jdbc:mysql://localhost:3309/MobcoursesAppdb?createDatabaseIfNotExist=true && useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
+                                        Statement st = cx.createStatement();
+                                        ResultSet rs = st.executeQuery("SELECT COUNT(*) FROM Course");
+                                        while (rs.next()) {
+                                            nbCourse = rs.getInt(1);
+                                        }
+                                    }
+                                    catch (Exception e){
+
+                                    }
+                                %>
+                                <h4><%=nbCourse%><p>
+
+                                    Courses</h4>
+                            </div>
                         </div>
-                        <a class="card-footer text-white clearfix small z-1" href="#">
+                        <a class="card-footer text-white clearfix small z-1" href="/course/">
                             <span class="float-left">View Details</span>
                             <span class="float-right">
                   <i class="fas fa-angle-right"></i>
@@ -83,9 +106,32 @@
                     <div class="card text-white bg-warning o-hidden h-100">
                         <div class="card-body">
                             <div class="card-body-icon">
-                                <i class="fas fa-fw fa-list"></i>
+                                <i class="fas fa-fw fa-user-graduate"></i>
                             </div>
-                            <div class="mr-5">11 New Tasks!</div>
+                            <div class="mr-5">
+
+
+                                <%
+                                    Object nbStudent = 0;
+                                    try {
+                                        Class.forName("com.mysql.cj.jdbc.Driver");
+                                        Connection cx = DriverManager.getConnection("jdbc:mysql://localhost:3309/MobcoursesAppdb?createDatabaseIfNotExist=true && useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
+                                        Statement st = cx.createStatement();
+                                        ResultSet rs = st.executeQuery("SELECT COUNT(*) FROM Student");
+                                        while (rs.next()) {
+                                            nbStudent = rs.getInt(1);
+                                        }
+                                    }
+                                    catch (Exception e){
+
+                                    }
+                                %>
+                                <h4><%=nbStudent%><p>
+
+                                    Students</h4>
+
+
+                            </div>
                         </div>
                         <a class="card-footer text-white clearfix small z-1" href="#">
                             <span class="float-left">View Details</span>
@@ -99,9 +145,30 @@
                     <div class="card text-white bg-success o-hidden h-100">
                         <div class="card-body">
                             <div class="card-body-icon">
-                                <i class="fas fa-fw fa-shopping-cart"></i>
+                                <i class="fas fa-fw fa-user-circle"></i>
                             </div>
-                            <div class="mr-5">123 New Orders!</div>
+                            <div class="mr-5">
+
+                                <%
+                                    Object nbCourseAuthor = 0;
+                                    try {
+                                        Class.forName("com.mysql.cj.jdbc.Driver");
+                                        Connection cx = DriverManager.getConnection("jdbc:mysql://localhost:3309/MobcoursesAppdb?createDatabaseIfNotExist=true && useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
+                                        Statement st = cx.createStatement();
+                                        ResultSet rs = st.executeQuery("SELECT COUNT(*) FROM CourseAuthor");
+                                        while (rs.next()) {
+                                            nbCourseAuthor = rs.getInt(1);
+                                        }
+                                    }
+                                    catch (Exception e){
+
+                                    }
+                                %>
+                                <h4><%=nbCourseAuthor%><p>
+
+                                    Instructors</h4>
+
+                            </div>
                         </div>
                         <a class="card-footer text-white clearfix small z-1" href="#">
                             <span class="float-left">View Details</span>
@@ -115,9 +182,30 @@
                     <div class="card text-white bg-danger o-hidden h-100">
                         <div class="card-body">
                             <div class="card-body-icon">
-                                <i class="fas fa-fw fa-life-ring"></i>
+                                <i class="fas fa-fw fa-school"></i>
                             </div>
-                            <div class="mr-5">13 New Tickets!</div>
+                            <div class="mr-5">
+
+                                <%
+                                    Object nbSubject = 0;
+                                    try {
+                                        Class.forName("com.mysql.cj.jdbc.Driver");
+                                        Connection cx = DriverManager.getConnection("jdbc:mysql://localhost:3309/MobcoursesAppdb?createDatabaseIfNotExist=true && useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
+                                        Statement st = cx.createStatement();
+                                        ResultSet rs = st.executeQuery("SELECT COUNT(*) FROM Subject");
+                                        while (rs.next()) {
+                                            nbSubject = rs.getInt(1);
+                                        }
+                                    }
+                                    catch (Exception e){
+
+                                    }
+                                %>
+                                <h4><%=nbSubject%><p>
+
+                                    Subjects</h4>
+
+                            </div>
                         </div>
                         <a class="card-footer text-white clearfix small z-1" href="#">
                             <span class="float-left">View Details</span>
@@ -136,15 +224,15 @@
 
 <%--        Area chart --%>
 
-        <div class="card mb-3">
-            <div class="card-header">
-                <i class="fas fa-chart-area"></i>
-                Area Chart Example</div>
-            <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-                <canvas id="myAreaChart" width="1004" height="301" style="display: block; width: 1004px; height: 301px;" class="chartjs-render-monitor"></canvas>
-            </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-        </div>
+<%--        <div class="card mb-3">--%>
+<%--            <div class="card-header">--%>
+<%--                <i class="fas fa-chart-area"></i>--%>
+<%--                Area Chart Example</div>--%>
+<%--            <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>--%>
+<%--                <canvas id="myAreaChart" width="1004" height="301" style="display: block; width: 1004px; height: 301px;" class="chartjs-render-monitor"></canvas>--%>
+<%--            </div>--%>
+<%--            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>--%>
+<%--        </div>--%>
 
 
         <!-- Sticky Footer -->

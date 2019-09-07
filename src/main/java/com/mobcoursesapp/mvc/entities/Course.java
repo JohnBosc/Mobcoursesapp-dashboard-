@@ -41,7 +41,6 @@ public class Course implements Serializable {
     }
 
 
-
     //Setters
 
 

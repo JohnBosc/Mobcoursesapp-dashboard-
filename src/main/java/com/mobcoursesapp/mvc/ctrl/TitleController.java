@@ -4,7 +4,6 @@ package com.mobcoursesapp.mvc.ctrl;
 import com.mobcoursesapp.mvc.entities.Course;
 import com.mobcoursesapp.mvc.entities.Lesson;
 import com.mobcoursesapp.mvc.entities.Title;
-import com.mobcoursesapp.mvc.services.ICourseService;
 import com.mobcoursesapp.mvc.services.ILessonService;
 import com.mobcoursesapp.mvc.services.ITitleService;
 import org.slf4j.Logger;
@@ -23,6 +22,8 @@ import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.mobcoursesapp.mvc.ctrl.LessonController.courseIdentity;
+
 @Controller
 @RequestMapping(value = "/title")
 public class TitleController {
@@ -38,6 +39,7 @@ public class TitleController {
     @PersistenceContext
     EntityManager em;
 
+    @Autowired
     public static Long lessonIdentity;
 
 
@@ -54,6 +56,8 @@ public class TitleController {
         model.addAttribute("titles", titles);
 
         lessonIdentity = lessonID;
+
+        System.out.println(courseIdentity);  // For debug purpose
 
         System.out.println(lessonIdentity);  // For debug purpose
 
@@ -107,96 +111,5 @@ public class TitleController {
         }
         return "title/addTitle";
     }
-
-
-
-
-//
-//    @PostMapping(value = "/save", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-//    public String saveCourse(Model model, Course course, MultipartFile file, HttpServletRequest request) {
-//
-//        String photoUrl = null;
-//
-//        if (course != null){
-//
-//            if (file != null && !file.isEmpty()){
-//                Part part = null;
-////                InputStream stream = null;
-//                    try {
-//
-//                        try {
-//                            part = request.getPart("file");
-//                        } catch (ServletException e) {
-//                            e.printStackTrace();
-//                        }
-//                        String fileName = extractFileName(part);
-//                        photoUrl = "request.getContextPath()/resources/thumbnails" + File.separator + fileName;
-//                        File fileSaveDir = new File(photoUrl);
-//                        part.write(photoUrl + File.separator);
-//
-////                        stream = file.getInputStream();
-////                        photoUrl = "request.getContextPath()/resources/thumbnails";
-//
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-//
-//            }
-//
-//            if(course.getCourseID() != null) {
-//
-//                courseService.update(course);
-//
-//            } else {
-//                course.setPhoto(photoUrl);
-//                courseService.save(course);
-//            }
-//
-//        }
-//
-//        return "redirect:/course/";
-//    }
-//
-//    private String extractFileName(Part part) {
-//        String contentDisp = part.getHeader("content-disposition");
-//        String[] items = contentDisp.split(";");
-//        for (String s : items) {
-//            if (s.trim().startsWith("filename")){
-//                return s.substring(s.indexOf("=") + 2, s.length() - 1);
-//            }
-//        }
-//        return "";
-//    }
-//
-//    @RequestMapping(value = "/update/{courseID}")
-//    public String updateCourse(Model model, @PathVariable Long courseID) {
-//
-//        if (courseID != null) {
-//
-//            Course course = courseService.getById(courseID);
-//
-//            if (course != null) {
-//                model.addAttribute("course", course);
-//            }
-//
-//        }
-//        return "courses/addCourse";
-//    }
-//
-//    @RequestMapping(value = "/remove/{courseID}")
-//    public String removeCourse(Model model, @PathVariable Long courseID) {
-//
-//        if (courseID != null){
-//            Course course = courseService.getById(courseID);
-//            if (course != null){
-//                // TODO relations of the element in the database before deletion
-//                courseService.remove(courseID);
-//            }
-//        }
-//        return "redirect:/courses/";
-//    }
-
-
-
 
 }

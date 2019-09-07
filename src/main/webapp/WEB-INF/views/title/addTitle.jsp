@@ -10,6 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <%@ include file="../ico.jsp" %>
     <title><fmt:message key="common.addCourse"/></title>
 
     <!-- Custom fonts for this template-->

@@ -1,3 +1,4 @@
+<%@ page import="static com.mobcoursesapp.mvc.ctrl.LessonController.courseIdentity" %>
 <%@ include file="../includes/includes.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <%@ include file="../ico.jsp" %>
     <title><fmt:message key="common.courses"/></title>
 
     <!-- Custom fonts for this template-->
@@ -63,7 +65,7 @@
                 </li>
                 <li class="breadcrumb-item">
                     <c:url value="/dashboard/" var="dashboard"/>
-                    <a href="#"><fmt:message key="common.courses.lesson"/> </a>
+                    <a href="/lesson/<%=courseIdentity%>"> <fmt:message key="common.courses.lesson"/> </a>
                 </li>
                 <li class="breadcrumb-item active">Titles</li>
             </ol>
@@ -74,8 +76,8 @@
 
 
             <div class="row">
-                <div class="col-lg-3 col-md-2 col-sm-0"></div>
-                <div class="col-lg-6 col-md-8 col-sm-12">
+                <div class="col-lg-2 col-md-1 col-sm-0"></div>
+                <div class="col-lg-8 col-md-10 col-sm-12">
                     <c:forEach items="${titles}" var="title">
 
                         <div>
@@ -133,7 +135,7 @@
 
                     </c:forEach>
                 </div>
-                <div class="col-lg-3 col-md-2 col-sm-0"></div>
+                <div class="col-lg-2 col-md-1 col-sm-0"></div>
             </div>
 
 

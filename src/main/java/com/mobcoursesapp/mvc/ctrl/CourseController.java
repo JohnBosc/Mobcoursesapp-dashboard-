@@ -7,7 +7,6 @@ import com.mobcoursesapp.mvc.entities.Lesson;
 import com.mobcoursesapp.mvc.entities.Subject;
 import com.mobcoursesapp.mvc.services.ICourseService;
 import com.mobcoursesapp.mvc.services.ICourse_AuthorService;
-import com.mobcoursesapp.mvc.services.ILessonService;
 import com.mobcoursesapp.mvc.services.ISubjectService;
 import com.mobcoursesapp.mvc.util.FileUploadUtility;
 import org.slf4j.Logger;
@@ -17,8 +16,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,9 +40,9 @@ public class CourseController {
 
 
 
-
     @RequestMapping(value = "/")
-    public String course(Model model) {
+    public String course(Model model, String courseTitle) {
+
 
         List<Course> courses = courseService.selectAll();
         if (courses == null) {

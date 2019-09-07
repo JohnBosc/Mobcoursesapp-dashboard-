@@ -25,16 +25,16 @@
 
     <!-- Navbar -->
     <ul class="navbar-nav ml-auto ml-md-0">
-        <li class="nav-item dropdown no-arrow mx-1">
-            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown"
-               aria-haspopup="true" aria-expanded="false">
-                <span class="badge badge-danger" style="">7</span>
-                <i class="fas fa-envelope fa-fw"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
-                <a class="dropdown-item" href="#" style="font-size: 12px!important;">View Questions</a>
-            </div>
-        </li>
+<%--        <li class="nav-item dropdown no-arrow mx-1">--%>
+<%--            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown"--%>
+<%--               aria-haspopup="true" aria-expanded="false">--%>
+<%--                <span class="badge badge-danger" style="">7</span>--%>
+<%--                <i class="fas fa-envelope fa-fw"></i>--%>
+<%--            </a>--%>
+<%--            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">--%>
+<%--                <a class="dropdown-item" href="#" style="font-size: 12px!important;">View Questions</a>--%>
+<%--            </div>--%>
+<%--        </li>--%>
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                aria-haspopup="true" aria-expanded="false">

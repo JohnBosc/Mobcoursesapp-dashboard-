@@ -1,5 +1,5 @@
-<%@ page import="com.mobcoursesapp.mvc.ctrl.LessonController" %>
-<%@ page import="static com.mobcoursesapp.mvc.ctrl.LessonController.courseIdentity" %>
+<%@ page import="com.mobcoursesapp.mvc.ctrl.WebCtrl.LessonController" %>
+<%@ page import="static com.mobcoursesapp.mvc.ctrl.WebCtrl.LessonController.courseIdentity" %>
 <%@ page import="static org.apache.log4j.xml.DOMConfigurator.setParameter" %>
 <%@ include file="../includes/includes.jsp" %>
 <!DOCTYPE html>

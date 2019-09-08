@@ -1,9 +1,8 @@
-package com.mobcoursesapp.mvc.ctrl;
+package com.mobcoursesapp.mvc.ctrl.WebCtrl;
 
 
 import com.mobcoursesapp.mvc.entities.Course;
 import com.mobcoursesapp.mvc.entities.CourseAuthor;
-import com.mobcoursesapp.mvc.entities.Lesson;
 import com.mobcoursesapp.mvc.entities.Subject;
 import com.mobcoursesapp.mvc.services.ICourseService;
 import com.mobcoursesapp.mvc.services.ICourse_AuthorService;
@@ -16,9 +15,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;

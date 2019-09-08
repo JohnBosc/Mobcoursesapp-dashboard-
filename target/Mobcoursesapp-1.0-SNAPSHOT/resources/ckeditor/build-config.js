@@ -187,4 +187,5 @@ var CKBUILDER_CONFIG = {
 		'zh' : 1,
 		'zh-cn' : 1
 	}
+
 };

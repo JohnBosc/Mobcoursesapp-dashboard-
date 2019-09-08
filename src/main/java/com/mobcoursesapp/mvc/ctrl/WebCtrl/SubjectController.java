@@ -1,4 +1,4 @@
-package com.mobcoursesapp.mvc.ctrl;
+package com.mobcoursesapp.mvc.ctrl.WebCtrl;
 
 
 import com.mobcoursesapp.mvc.entities.Course;

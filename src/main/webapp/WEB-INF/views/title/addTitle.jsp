@@ -1,3 +1,5 @@
+<%@ page import="static com.mobcoursesapp.mvc.ctrl.WebCtrl.TitleController.lessonIdentity" %>
+<%@ page import="static com.mobcoursesapp.mvc.ctrl.WebCtrl.LessonController.courseIdentity" %>
 <%@ include file="../includes/includes.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,8 +65,7 @@
                     <a href="${course}"><fmt:message key="common.courses"/></a>
                 </li>
                 <li class="breadcrumb-item">
-                    <c:url value="/dashboard/" var="dashboard"/>
-                    <a href="#"><fmt:message key="common.courses.lesson"/> </a>
+                    <a href="/lesson/<%=courseIdentity%>"><fmt:message key="common.courses.lesson"/> </a>
                 </li>
                 <li class="breadcrumb-item">
                     <c:url value="/dashboard/" var="dashboard"/>
@@ -116,7 +117,7 @@
                     </div>
 
                     <div class="panel-footer" style="margin-top: 30px;">
-                        <a href="<c:url value="/title/${lessonIdentity}"/> " class="btn btn-secondary" data-dismiss="modal"><i
+                        <a href="/title/<%=lessonIdentity%>" class="btn btn-secondary" data-dismiss="modal"><i
                                 class="fas fa-fw fa-arrow-left"></i>&nbsp;Cancel</a>
                         <button type="submit" class="btn btn-primary"><i class="fas fa-fw fa-save"></i>&nbsp;Save
                         </button>

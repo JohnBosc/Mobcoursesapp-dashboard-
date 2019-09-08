@@ -1,4 +1,4 @@
-<%@ page import="static com.mobcoursesapp.mvc.ctrl.LessonController.courseIdentity" %>
+<%@ page import="static com.mobcoursesapp.mvc.ctrl.WebCtrl.LessonController.courseIdentity" %>
 <%@ include file="../includes/includes.jsp" %>
 <!DOCTYPE html>
 <html lang="en">

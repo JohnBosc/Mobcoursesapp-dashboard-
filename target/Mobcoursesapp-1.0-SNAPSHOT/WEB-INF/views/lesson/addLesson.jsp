@@ -1,3 +1,4 @@
+<%@ page import="static com.mobcoursesapp.mvc.ctrl.WebCtrl.LessonController.courseIdentity" %>
 <%@ include file="../includes/includes.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,7 +65,9 @@
                 </li>
                 <li class="breadcrumb-item">
                     <%--                    ${course.getCourseTitle()}--%>
-                    Course Title
+                    <a href="/lesson/<%=courseIdentity%>">
+                        <fmt:message key="common.courses.lesson"/>
+                    </a>
                 </li>
                 <%--                <li class="breadcrumb-item">--%>
                 <%--                    &lt;%&ndash;                    <c:url value="/lesson/" var="lessons"/>&ndash;%&gt;--%>
@@ -117,7 +120,7 @@
 
 
                             <div class="panel-footer" style="margin-top: 30px;">
-                                <a href="<c:url value="/lesson/${courseIdentity}"/> " class="btn btn-secondary" data-dismiss="modal"><i
+                                <a href="/lesson/<%=courseIdentity%>" class="btn btn-secondary" data-dismiss="modal"><i
                                         class="fas fa-fw fa-arrow-left"></i>&nbsp;Cancel</a>
                                 <button type="submit" class="btn btn-primary"><i class="fas fa-fw fa-save"></i>&nbsp;Save
                                 </button>

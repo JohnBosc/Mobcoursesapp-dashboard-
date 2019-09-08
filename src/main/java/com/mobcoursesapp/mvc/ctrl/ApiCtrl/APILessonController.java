@@ -22,21 +22,14 @@ public class APILessonController {
 
     private static final Logger logger = LoggerFactory.getLogger(APILessonController.class);
 
-    @Autowired
-    private ILessonService lessonService;
-
-
-    @Autowired
-    private ICourseService courseService;
-
     @PersistenceContext
     EntityManager em;
 
     public static Long courseIdentity;
 
 
-    @RequestMapping(value = "/lessons/{courseID}")
-    public String lesson(Model model, @PathVariable Long courseID) {
+    @RequestMapping(value = "/lessons", produces = "application/json")
+    public List<Lesson> lesson(Model model, @PathVariable Long courseID) {
 
 
         Query query = em.createQuery("select l" + " from Lesson l " + "where l.course.courseID=:courseID", Lesson.class);
@@ -54,7 +47,7 @@ public class APILessonController {
 
         System.out.println(courseIdentity); // For debug purpose
 
-        return "All Lesson";
+        return lessons;
     }
 
 //
@@ -106,19 +99,19 @@ public class APILessonController {
 //        }
 //        return "lesson/addLesson";
 //    }
-
-    @RequestMapping(value = "/lessons/remove/{lessonID}")
-    public String removeLesson(Model model, @PathVariable Long lessonID) {
-
-        if (lessonID != null){
-            Lesson lesson = lessonService.getById(lessonID);
-            if (lesson != null){
-                // TODO relations of the element in the database before deletion
-                courseService.remove(lessonID);
-            }
-        }
-        return "All lessons of " + courseIdentity;
-    }
+//
+//    @RequestMapping(value = "/lessons/remove/{lessonID}")
+//    public String removeLesson(Model model, @PathVariable Long lessonID) {
+//
+//        if (lessonID != null){
+//            Lesson lesson = lessonService.getById(lessonID);
+//            if (lesson != null){
+//                // TODO relations of the element in the database before deletion
+//                courseService.remove(lessonID);
+//            }
+//        }
+//        return "All lessons of " + courseIdentity;
+//    }
 
 
 }

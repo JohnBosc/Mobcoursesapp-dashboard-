@@ -22,7 +22,7 @@ public class APISubjectController {
 
 
     @RequestMapping(value = "/subjects")
-    public String subject(Model model) {
+    public List<Subject> subject(Model model) {
 
         List<Subject> subjects = subjectService.selectAll();
         if (subjects == null) {
@@ -31,7 +31,7 @@ public class APISubjectController {
 
         model.addAttribute("subjects", subjects);
 
-        return "All Subjects";
+        return subjects;
     }
 
 //

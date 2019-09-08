@@ -1,17 +1,19 @@
-package com.mobcoursesapp.mvc.ctrl.ApiCtrl;
+package com.mobcoursesapp.mvc.ctrl.WebCtrl;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Locale;
 
-@RestController
-//@RequestMapping(value = "/dashboard")
-public class APIDashboardController {
+@Controller
+@RequestMapping(value = "/dashboard")
+public class DashboardController {
 
-    @RequestMapping(value = "/dash")
+    @RequestMapping(value = "/")
     public String home(Locale locale, Model model) {
 
         return "dashboard/dashboard";

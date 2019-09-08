@@ -13,7 +13,7 @@ public class Title implements Serializable {
 
     private String titleName;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "lessonID")
     private Lesson lesson;
 

@@ -41,6 +41,8 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
         <property name="entityManagerFactory" ref="entityManagerFactory"></property>
     </bean>
 
+
+
     <tx:annotation-driven transaction-manager="transactionManager"/>
     <context:annotation-config></context:annotation-config>
 

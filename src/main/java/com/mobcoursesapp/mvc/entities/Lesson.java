@@ -16,11 +16,11 @@ public class Lesson implements Serializable {
 
     private String lessonTitle;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "courseID")
     private Course course;
 
-    @OneToMany(mappedBy = "lesson")
+    @OneToMany(mappedBy = "lesson", fetch = FetchType.EAGER)
     private List<Title> titles;
 
 

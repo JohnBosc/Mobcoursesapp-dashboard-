@@ -22,20 +22,14 @@ public class APITitleController {
 
     private static final Logger logger = LoggerFactory.getLogger(APITitleController.class);
 
-    @Autowired
-    private ITitleService titleService;
-
-    @Autowired
-    private ILessonService lessonService;
-
     @PersistenceContext
     EntityManager em;
 
     public static Long lessonIdentity;
 
 
-    @RequestMapping(value = "/titles/{lessonID}")
-    public String title(Model model, @PathVariable Long lessonID) {
+    @RequestMapping(value = "/title", produces = "application/json")
+    public List<Title> title(Model model, @PathVariable Long lessonID) {
 
         Query query = em.createQuery("select t" + " from Title t " + "where t.lesson.lessonID=:lessonID", Title.class);
         query.setParameter("lessonID", lessonID);
@@ -50,7 +44,7 @@ public class APITitleController {
 
         System.out.println(lessonIdentity);  // For debug purpose
 
-        return "All Titles";
+        return titles;
     }
 
 //

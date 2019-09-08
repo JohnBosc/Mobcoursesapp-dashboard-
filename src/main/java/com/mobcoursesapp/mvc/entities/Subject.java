@@ -14,7 +14,7 @@ public class Subject implements Serializable {
 
     private String subjectName;
 
-    @OneToMany(mappedBy = "subject")
+    @OneToMany(mappedBy = "subject", fetch = FetchType.EAGER)
     private List<Course> courses;
 
 

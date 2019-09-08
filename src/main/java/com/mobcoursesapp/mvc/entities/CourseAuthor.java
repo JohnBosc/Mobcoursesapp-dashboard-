@@ -14,7 +14,7 @@ public class CourseAuthor implements Serializable {
 
     private String name;
 
-    @OneToMany(mappedBy = "courseAuthor")
+    @OneToMany(mappedBy = "courseAuthor", fetch = FetchType.EAGER)
     private List<Course> courses;
 
     private String email;

@@ -1,7 +1,6 @@
-package com.mobcoursesapp.mvc.ctrl;
+package com.mobcoursesapp.mvc.ctrl.WebCtrl;
 
 
-import com.mobcoursesapp.mvc.entities.Course;
 import com.mobcoursesapp.mvc.entities.Lesson;
 import com.mobcoursesapp.mvc.services.ICourseService;
 import com.mobcoursesapp.mvc.services.ILessonService;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 

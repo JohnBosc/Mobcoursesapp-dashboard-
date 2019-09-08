@@ -1,8 +1,6 @@
-package com.mobcoursesapp.mvc.ctrl;
+package com.mobcoursesapp.mvc.ctrl.WebCtrl;
 
 
-import com.mobcoursesapp.mvc.entities.Course;
-import com.mobcoursesapp.mvc.entities.Lesson;
 import com.mobcoursesapp.mvc.entities.Title;
 import com.mobcoursesapp.mvc.services.ILessonService;
 import com.mobcoursesapp.mvc.services.ITitleService;
@@ -22,7 +20,7 @@ import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.mobcoursesapp.mvc.ctrl.LessonController.courseIdentity;
+import static com.mobcoursesapp.mvc.ctrl.WebCtrl.LessonController.courseIdentity;
 
 @Controller
 @RequestMapping(value = "/title")
@@ -93,7 +91,7 @@ public class TitleController {
 
         }
 
-        return "redirect:/lesson/" + lessonIdentity;
+        return "redirect:/title/" + lessonIdentity;
     }
 
 

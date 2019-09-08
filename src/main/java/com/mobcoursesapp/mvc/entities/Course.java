@@ -16,11 +16,11 @@ public class Course implements Serializable {
 
     private String courseTitle;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "subjectID")
     private Subject subject;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "courseAuthorID")
     private CourseAuthor courseAuthor;
 
@@ -30,10 +30,11 @@ public class Course implements Serializable {
 
     private String requirements;
 
+
     @Transient
     private MultipartFile photo;
 
-    @OneToMany(mappedBy = "course")
+    @OneToMany(mappedBy = "course", fetch = FetchType.EAGER)
     private List<Lesson> lessons;
 
 

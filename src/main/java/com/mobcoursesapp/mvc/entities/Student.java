@@ -23,7 +23,7 @@ public class Student implements Serializable {
 
 
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "Student_Course",
             joinColumns = {@JoinColumn(name = "Student_studentID", referencedColumnName = "studentID")},

@@ -11,8 +11,7 @@ import java.util.List;
 
 public class FileUploadUtility {
 
-    private static final String ABS_PATH = "/opt/lampp/htdocs/mobcoursesapp/thumbnails";
-//            "/home/jb/Documents/Mobcoursesapp/src/main/webapp/resources/thumbnails/"
+    private static final String ABS_PATH = "/home/jb/Documents/Mobcoursesapp/src/main/webapp/resources/thumbnails/";
     private static String REAL_PATH = "";
 
 
@@ -20,7 +19,7 @@ public class FileUploadUtility {
     public static void uploadFile(HttpServletRequest request, MultipartFile photo, String courseTitle) {
 
         // get the real path
-        REAL_PATH = request.getSession().getServletContext().getRealPath("http://localhost/mobcoursesapp/thumbnails/");
+        REAL_PATH = request.getSession().getServletContext().getRealPath(request.getContextPath() + "/resources/thumbnails/");
         logger.info(REAL_PATH);
 
         // to make sure all the directories exists

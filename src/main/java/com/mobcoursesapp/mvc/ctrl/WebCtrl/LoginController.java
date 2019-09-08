@@ -1,4 +1,4 @@
-package com.mobcoursesapp.mvc.ctrl;
+package com.mobcoursesapp.mvc.ctrl.WebCtrl;
 
 
 import org.slf4j.Logger;
